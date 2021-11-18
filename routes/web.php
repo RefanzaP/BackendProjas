@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\orderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/order',[orderController::class, 'ambil']);
+//tambah data
+Route::get('/order/tambah',[orderController::class, 'tambah']);
+//simpan penambahan data
+Route::post('/order/store',[orderController::class, 'store']);
+//&&&
+Route::get('/order/hapus/{id_order}',[orderController::class, 'hapus']);
+//update
+Route::get('/order/edit/{id_order}',[orderController::class, 'edit']);
+Route::post('/order/update',[orderController::class, 'update']);
