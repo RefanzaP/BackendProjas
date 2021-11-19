@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\orderController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +17,7 @@ use App\Http\Controllers\orderController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/order',[orderController::class, 'ambil']);
@@ -27,3 +30,7 @@ Route::get('/order/hapus/{id_order}',[orderController::class, 'hapus']);
 //update
 Route::get('/order/edit/{id_order}',[orderController::class, 'edit']);
 Route::post('/order/update',[orderController::class, 'update']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
